@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta lang="en" charset="utf-8">
+    <title></title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="title" content="" />
+    <meta name="description" content="" />
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:title" content="" />
+    <meta property="twitter:description" content="" />
+    <meta property="twitter:image" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:type" content="website" />
+
+    <link rel="icon" type="image/png" href="" sizes="32x32">
+    <link rel="icon" type="image/png" href="" sizes="192x192">
+
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #63ccfb;
+        }
+
+        #canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        #playbutton {
+            position: absolute;
+            left:50%;
+            top:50%;
+            z-index: 1;
+            width:75px;
+            height:75px;
+            transform: translate(-350%, -50%);
+        }
+        #time {
+            position: absolute;
+            left:50%;
+            top:50%;
+            z-index: 1;
+            width:75px;
+            height:75px;
+            transform: translate(240%, -10%);
+            color: white;
+            font: 1em/1em normal normal "Bariol";
+        }
+    </style>
+
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <script type="text/javascript" src="app.js"></script>
+    <img src="img/play-button.png" id="playbutton">
+    <div id="time">0:30</div>
+</body>
+
+</html>
