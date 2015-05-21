@@ -1,7 +1,18 @@
-navigator.getUserMedia = (navigator.getUserMedia ||
-    navigator.webkitGetUserMedia ||
-    navigator.mozGetUserMedia ||
-    navigator.msGetUserMedia);
+// Play/pause controller
+var playPauseButton = document.getElementById('playpause');
+var isPlaying = false;
+
+function togglePlay() {
+    if (isPlaying) {
+        playPauseButton.src = 'img/pause-button.png';
+        isPlaying = false;
+    } else {
+        playPauseButton.src = 'img/play-button.png';
+        isPlaying = true;
+    }
+}
+
+playPauseButton.addEventListener('mouseup', togglePlay);
 
 // Canvas Context
 var canvas = document.getElementById('canvas');
@@ -31,13 +42,12 @@ var source;
 
 // Analyser Node
 var analyser = aCtx.createAnalyser();
-analyser.fftSize = 32;
+analyser.fftSize = 64;
 analyser.smoothingTimeConstant = .9;
-analyser.minDecibels = -90;
+analyser.minDecibels = -80;
 analyser.maxDecibels = -10;
 
 var bufferLength = analyser.frequencyBinCount;
-console.log(bufferLength);
 var dataArray = new Uint8Array(bufferLength);
 
 // Get microphone
@@ -57,8 +67,7 @@ function animate() {
     analyser.getByteFrequencyData(dataArray);
 
     var x = (WIDTH / 2) - (16 * barWidth);
-    console.log(dataArray);
-    for (var i = 0; i < bufferLength; i++) {
+    for (var i = 0; i < 16; i++) {
         barHeight = dataArray[i];
         if (barHeight === 0)
             barHeight = 1;
@@ -75,6 +84,7 @@ function animate() {
 function gotStream(stream) {
     source = aCtx.createMediaStreamSource(stream);
     source.connect(analyser);
+    animate();
 }
 
 function lostStream(e) {
