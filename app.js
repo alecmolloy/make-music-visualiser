@@ -44,7 +44,7 @@ var source;
 var analyser = aCtx.createAnalyser();
 analyser.fftSize = 64;
 analyser.smoothingTimeConstant = .9;
-analyser.minDecibels = -80;
+analyser.minDecibels = -90;
 analyser.maxDecibels = -10;
 
 var bufferLength = analyser.frequencyBinCount;
