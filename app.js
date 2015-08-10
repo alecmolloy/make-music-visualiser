@@ -68,7 +68,7 @@ function animate() {
 
     var x = (WIDTH / 2) - (16 * barWidth);
     for (var i = 0; i < 16; i++) {
-        barHeight = dataArray[i];
+        barHeight = dataArray[i] * .6;
         if (barHeight === 0)
             barHeight = 1;
 
